@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Trivedi | Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Himanshu Trivedi - Data Analyst specializing in SQL, Python, Power BI, and Data Modeling. MCA Student at Sinhgad Institute of Management, Pune.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'data-slate': '#0f172a',
+                        'data-cyan': '#06b6d4',
+                        'data-indigo': '#6366f1',
+                        'data-emerald': '#10b981',
+                    },
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s ease infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(16px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: linear-gradient(135deg, #0b1120 0%, #0f172a 50%, #1e293b 100%);
+            color: #e2e8f0;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(0deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content-wrapper { position: relative; z-index: 1; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #6366f1 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient 6s ease infinite;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .metric-badge {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .metric-badge:hover {
+            border-color: #06b6d4;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15);
+        }
+
+        .skill-tag {
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+        .skill-tag:hover {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: #06b6d4;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid #6366f1;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #c7d2fe;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.25);
+            transform: translateY(-2px);
+        }
+
+        input, textarea {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f1f5f9;
+            padding: 12px 14px;
+            border-radius: 8px;
+            width: 100%;
+            transition: all 0.25s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        pre code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="glass sticky top-0 z-40 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-gradient-to-tr from-cyan-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                            <span class="text-white font-black text-base">HT</span>
+                        </div>
+                        <span class="font-bold text-lg tracking-wide">Himanshu <span class="text-cyan-400">Trivedi</span></span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-7">
+                        <a href="#home" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Home</a>
+                        <a href="#projects" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#code-showcase" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Code Lab</a>
+                        <a href="#github-activity" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Activity</a>
+                        <a href="#skills" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Skills</a>
+                        <a href="#education" class="text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">Credentials</a>
+                        <a href="#contact" class="btn-primary text-sm py-2">Contact Me</a>
+                    </div>
+
+                    <button class="md:hidden p-2 text-slate-400 hover:text-white" id="mobile-menu-btn" aria-label="Toggle menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-5 py-4 space-y-3">
+                <a href="#home" class="block text-slate-300 hover:text-cyan-400 py-1">Home</a>
+                <a href="#projects" class="block text-slate-300 hover:text-cyan-400 py-1">Projects</a>
+                <a href="#code-showcase" class="block text-slate-300 hover:text-cyan-400 py-1">Code Lab</a>
+                <a href="#github-activity" class="block text-slate-300 hover:text-cyan-400 py-1">Activity</a>
+                <a href="#skills" class="block text-slate-300 hover:text-cyan-400 py-1">Skills</a>
+                <a href="#education" class="block text-slate-300 hover:text-cyan-400 py-1">Credentials</a>
+                <a href="#contact" class="btn-primary w-full text-center mt-2">Contact Me</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                
+                <!-- Profile Image -->
+                <div class="relative w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-6">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-600 blur-md opacity-70 animate-pulse"></div>
+                    <div class="relative w-full h-full rounded-full border-2 border-cyan-400/80 shadow-2xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                        <img 
+                            src="Profile.jpeg" 
+                            alt="Himanshu Trivedi" 
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null; this.src='profile.jpg'; this.onerror=function(){this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';};"
+                        >
+                        <div id="avatar-fallback" style="display:none;" class="w-full h-full items-center justify-center bg-gradient-to-tr from-cyan-900/60 to-indigo-900/60 text-cyan-400 font-bold text-3xl">
+                            HT
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Aspiring Data Analyst | MCA Student
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight">
+                    Hi, I'm Himanshu Trivedi <br/>
+                    <span class="gradient-text">Turning Raw Data into Actionable Insights</span>
+                </h1>
+
+                <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    MCA student with strong expertise in <strong class="text-cyan-400">SQL</strong>, <strong class="text-indigo-400">Python</strong>, and <strong class="text-emerald-400">Power BI</strong>. Skilled in database querying, data cleaning, statistical analysis, and interactive dashboard creation.
+                </p>
+
+                <!-- Action Buttons: Explore Projects, Download Resume, Live Portfolio -->
+                <div class="flex flex-wrap gap-4 justify-center mb-14">
+                    <a href="#projects" class="btn-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        Explore Projects
+                    </a>
+                    <a href="Himanshu_Trivedi_Resume.pdf" download="Himanshu_Trivedi_Resume.pdf" class="btn-secondary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Download Resume
+                    </a>
+                    <a href="https://himanshu-data-analyst-portfolio.vercel.app/" target="_blank" class="p-2.5 glass rounded-lg hover:text-cyan-400 text-xs font-semibold flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        Live App
+                    </a>
+                </div>
+
+                <!-- Impact Metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                    <div class="metric-badge">
+                        <div class="text-2xl font-black text-cyan-400">3+</div>
+                        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Full Stack & DB Projects</div>
+                    </div>
+                    <div class="metric-badge">
+                        <div class="text-2xl font-black text-indigo-400">IIT</div>
+                        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Roorkee & Bombay Certified</div>
+                    </div>
+                    <div class="metric-badge">
+                        <div class="text-2xl font-black text-emerald-400">Adv SQL</div>
+                        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">HackerRank Certified</div>
+                    </div>
+                    <div class="metric-badge">
+                        <div class="text-2xl font-black text-cyan-400">Pune</div>
+                        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Based / Open to Relocate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-14">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Featured Projects</h2>
+                    <p class="text-slate-400">Application architectures with database design and data management</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass rounded-xl overflow-hidden p-6 flex flex-col justify-between hover:border-cyan-500/50 transition-all">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Python & Django</span>
+                                <span class="text-xs text-slate-400">Analytics & Tracking</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Attendify - Smart Attendance System</h3>
+                            <p class="text-slate-400 text-sm mb-4">Attendance tracking, leave management, and automated result generation using Django & SQLite.</p>
+                            
+                            <div class="space-y-2 mb-6 text-sm">
+                                <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">
+                                    <span class="text-xs text-slate-400 block">Core Architecture</span>
+                                    <span class="text-emerald-400 font-semibold">Separate Student/Staff/Admin roles with secure reporting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">SQLite</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="openModal('attendify')" class="flex-1 btn-primary text-xs py-2">Quick Overview</button>
+                                <a href="https://github.com/trivedi25367/Smart-Attendance-Management-System" target="_blank" class="p-2 glass rounded-lg hover:text-cyan-400 flex items-center justify-center" title="GitHub Repo">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass rounded-xl overflow-hidden p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Java & RDBMS</span>
+                                <span class="text-xs text-slate-400">Enterprise Database</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Smart E-Driving License System</h3>
+                            <p class="text-slate-400 text-sm mb-4">License verification workflow with 30-day eligibility logic, QR generation, and MySQL integration.</p>
+                            
+                            <div class="space-y-2 mb-6 text-sm">
+                                <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">
+                                    <span class="text-xs text-slate-400 block">Database Architecture</span>
+                                    <span class="text-indigo-400 font-semibold">Relational schema for applicant verification & payment tracking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">JDBC</span>
+                                <span class="skill-tag">Java Servlets</span>
+                                <span class="skill-tag">ZXing QR</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="openModal('license')" class="flex-1 btn-primary text-xs py-2">Quick Overview</button>
+                                <a href="https://github.com/trivedi25367" target="_blank" class="p-2 glass rounded-lg hover:text-indigo-400 flex items-center justify-center" title="GitHub Repo">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass rounded-xl overflow-hidden p-6 flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Django & Web</span>
+                                <span class="text-xs text-slate-400">Content Management</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Interactive Blog Platform</h3>
+                            <p class="text-slate-400 text-sm mb-4">Category-wise content indexing, search functionality, and database management system.</p>
+                            
+                            <div class="space-y-2 mb-6 text-sm">
+                                <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">
+                                    <span class="text-xs text-slate-400 block">Database Querying</span>
+                                    <span class="text-emerald-400 font-semibold">Structured queries for search filters and user content indexing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="skill-tag">Django ORM</span>
+                                <span class="skill-tag">SQLite</span>
+                                <span class="skill-tag">Tailwind CSS</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="openModal('blog')" class="flex-1 btn-primary text-xs py-2">Quick Overview</button>
+                                <a href="https://github.com/trivedi25367" target="_blank" class="p-2 glass rounded-lg hover:text-emerald-400 flex items-center justify-center" title="GitHub Repo">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Showcase Section -->
+        <section id="code-showcase" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-10 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Code & Analytical Lab</h2>
+                    <p class="text-slate-400">Sample scripts and database queries demonstrating analytical workflows</p>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden border border-slate-800 shadow-2xl">
+                    <div class="flex border-b border-slate-800 bg-slate-900/80 px-4 pt-3 gap-2">
+                        <button onclick="switchTab('sql')" id="tab-sql" class="px-4 py-2 text-sm font-semibold rounded-t-lg text-cyan-400 border-b-2 border-cyan-400 bg-slate-800/50">SQL (HackerRank Adv)</button>
+                        <button onclick="switchTab('python')" id="tab-python" class="px-4 py-2 text-sm font-semibold rounded-t-lg text-slate-400 hover:text-slate-200">Python (Pandas/EDA)</button>
+                        <button onclick="switchTab('powerbi')" id="tab-powerbi" class="px-4 py-2 text-sm font-semibold rounded-t-lg text-slate-400 hover:text-slate-200">Power BI (DAX)</button>
+                    </div>
+                    
+                    <div class="p-6 bg-slate-950 font-mono text-xs sm:text-sm text-slate-300 overflow-x-auto leading-relaxed">
+                        <!-- SQL -->
+                        <div id="code-sql">
+<pre><code><span class="text-emerald-400">-- Advanced SQL: Aggregation & Window Function Analysis</span>
+<span class="text-indigo-400">WITH</span> MonthlyAttendance <span class="text-indigo-400">AS</span> (
+    <span class="text-indigo-400">SELECT</span> 
+        student_id,
+        <span class="text-cyan-400">DATE_TRUNC</span>('month', attendance_date) <span class="text-indigo-400">AS</span> month_record,
+        <span class="text-cyan-400">COUNT</span>(CASE WHEN status = 'Present' THEN 1 END) <span class="text-indigo-400">AS</span> present_days,
+        <span class="text-cyan-400">COUNT</span>(attendance_id) <span class="text-indigo-400">AS</span> total_days
+    <span class="text-indigo-400">FROM</span> student_attendance
+    <span class="text-indigo-400">GROUP BY</span> 1, 2
+)
+<span class="text-indigo-400">SELECT</span> 
+    student_id,
+    month_record,
+    <span class="text-cyan-400">ROUND</span>((present_days * 100.0 / total_days), 2) <span class="text-indigo-400">AS</span> attendance_percentage,
+    <span class="text-cyan-400">DENSE_RANK</span>() <span class="text-indigo-400">OVER</span>(
+        <span class="text-indigo-400">PARTITION BY</span> month_record 
+        <span class="text-indigo-400">ORDER BY</span> (present_days * 1.0 / total_days) <span class="text-indigo-400">DESC</span>
+    ) <span class="text-indigo-400">AS</span> batch_rank
+<span class="text-indigo-400">FROM</span> MonthlyAttendance;</code></pre>
+                        </div>
+
+                        <!-- Python -->
+                        <div id="code-python" class="hidden">
+<pre><code><span class="text-emerald-400"># Data Cleaning & Missing Value Imputation with Pandas</span>
+<span class="text-indigo-400">import</span> pandas <span class="text-indigo-400">as</span> pd
+<span class="text-indigo-400">import</span> numpy <span class="text-indigo-400">as</span> np
+
+<span class="text-indigo-400">def</span> <span class="text-cyan-400">clean_and_aggregate</span>(file_path):
+    df = pd.read_csv(file_path)
+    <span class="text-emerald-400"># Handle null records and typecasting</span>
+    df[<span class="text-emerald-300">'date'</span>] = pd.to_datetime(df[<span class="text-emerald-300">'date'</span>])
+    df[<span class="text-emerald-300">'score'</span>] = df[<span class="text-emerald-300">'score'</span>].fillna(df.groupby(<span class="text-emerald-300">'category'</span>)[<span class="text-emerald-300">'score'</span>].transform(<span class="text-emerald-300">'median'</span>))
+    
+    <span class="text-emerald-400"># KPI Aggregation</span>
+    summary = df.groupby(<span class="text-emerald-300">'category'</span>).agg(
+        total_records=(<span class="text-emerald-300">'id'</span>, <span class="text-emerald-300">'count'</span>),
+        avg_score=(<span class="text-emerald-300">'score'</span>, <span class="text-emerald-300">'mean'</span>)
+    ).reset_index()
+    <span class="text-indigo-400">return</span> summary</code></pre>
+                        </div>
+
+                        <!-- Power BI -->
+                        <div id="code-powerbi" class="hidden">
+<pre><code><span class="text-emerald-400">// DAX Measure: Overall Attendance Compliance %</span>
+Attendance Rate % = 
+<span class="text-indigo-400">VAR</span> TotalPresent = <span class="text-cyan-400">CALCULATE</span>(<span class="text-cyan-400">COUNTROWS</span>('Attendance'), 'Attendance'[Status] = "Present")
+<span class="text-indigo-400">VAR</span> TotalSessions = <span class="text-cyan-400">COUNTROWS</span>('Attendance')
+<span class="text-indigo-400">RETURN</span> 
+    <span class="text-cyan-400">DIVIDE</span>(TotalPresent, TotalSessions, 0)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Section (Reliable Interactive Cards) -->
+        <section id="github-activity" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-14 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Open Source & Repositories</h2>
+                    <p class="text-slate-400">Featured codebases and database projects on GitHub</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <!-- Repo 1 -->
+                    <a href="https://github.com/trivedi25367/Smart-Attendance-Management-System" target="_blank" class="glass p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-all block group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-cyan-400 font-bold text-base group-hover:underline flex items-center gap-2">
+                                <span>📦</span> Smart-Attendance-Management-System
+                            </span>
+                            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Python / Django</span>
+                        </div>
+                        <p class="text-slate-400 text-xs mb-4 leading-relaxed">Role-based attendance automation, dynamic leave calculations, and reporting using SQLite.</p>
+                        <div class="flex items-center gap-4 text-xs text-slate-500">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 inline-block"></span> Python</span>
+                            <span>⭐ Public Repo</span>
+                        </div>
+                    </a>
+
+                    <!-- Repo 2 -->
+                    <a href="https://github.com/trivedi25367" target="_blank" class="glass p-6 rounded-xl border border-slate-800 hover:border-indigo-500/50 transition-all block group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-indigo-400 font-bold text-base group-hover:underline flex items-center gap-2">
+                                <span>📦</span> Smart-E-Driving-License-System
+                            </span>
+                            <span class="text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Java / MySQL</span>
+                        </div>
+                        <p class="text-slate-400 text-xs mb-4 leading-relaxed">Enterprise license verification lifecycle with automated eligibility criteria and QR security.</p>
+                        <div class="flex items-center gap-4 text-xs text-slate-500">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span> Java</span>
+                            <span>⭐ Public Repo</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- GitHub Profile Action Bar -->
+                <div class="glass p-6 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Explore All Repositories</h3>
+                        <p class="text-slate-400 text-xs mt-1">Visit my profile for data cleaning scripts, DAX models, and web applications.</p>
+                    </div>
+                    <a href="https://github.com/trivedi25367" target="_blank" class="btn-primary text-xs py-2.5 px-5 whitespace-nowrap">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        Visit @trivedi25367 ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-14">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Technical Toolkit</h2>
+                    <p class="text-slate-400">Proficiencies verified through hands-on development and coursework</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass p-6 rounded-xl border border-slate-800">
+                        <h3 class="text-lg font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                            <span>📊</span> Data Analysis & BI
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">MS Excel</span>
+                            <span class="skill-tag">Data Cleaning</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">KPI Dashboards</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-6 rounded-xl border border-slate-800">
+                        <h3 class="text-lg font-bold text-indigo-400 mb-4 flex items-center gap-2">
+                            <span>🗄️</span> Databases & SQL
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">SQL (Advanced)</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQLite</span>
+                            <span class="skill-tag">RDBMS Design</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-6 rounded-xl border border-slate-800">
+                        <h3 class="text-lg font-bold text-emerald-400 mb-4 flex items-center gap-2">
+                            <span>🐍</span> Languages & Libraries
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Git / GitHub</span>
+                            <span class="skill-tag">C / C++</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Credentials Section -->
+        <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-14">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Education & Credentials</h2>
+                    <p class="text-slate-400">Academic background and verified technical certifications</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- MCA -->
+                    <div class="glass p-6 sm:p-8 rounded-xl border border-slate-800">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-white">Master of Computer Applications (MCA)</h3>
+                            <span class="text-cyan-400 text-xs font-semibold bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 w-fit">2025 - Present</span>
+                        </div>
+                        <p class="text-slate-300 text-sm font-medium">Sinhgad Institute of Management, Pune | Savitribai Phule Pune University</p>
+                        <p class="text-slate-400 text-xs mt-1">Specialization: Computer Applications & Database Systems</p>
+                    </div>
+
+                    <!-- BA -->
+                    <div class="glass p-6 sm:p-8 rounded-xl border border-slate-800">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-white">Bachelor of Arts (BA)</h3>
+                            <span class="text-slate-400 text-xs font-semibold bg-slate-800 px-3 py-1 rounded-full w-fit">2019 - 2022</span>
+                        </div>
+                        <p class="text-slate-300 text-sm font-medium">D.B.S College, Govind Nagar Kanpur | CSJM University, Kanpur</p>
+                        <p class="text-slate-400 text-xs mt-1">Specialization: Economics | Percentage: 57.22%</p>
+                    </div>
+
+                    <!-- Verified Certifications -->
+                    <div class="glass p-6 sm:p-8 rounded-xl border border-slate-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span>📜</span> Verified Certifications
+                            </h3>
+                            <a href="https://drive.google.com/drive/folders/1M8dDGAhIDXyXp8R_tOriO4LPajxkh7EQ?usp=drive_link" target="_blank" class="text-xs px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full hover:bg-cyan-500/20 font-semibold flex items-center gap-1">
+                                Drive Vault ↗
+                            </a>
+                        </div>
+                        
+                        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                            <!-- NPTEL IIT Roorkee -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-cyan-400 block">Data Analytics with Python</span>
+                                    <span class="text-slate-400 text-xs">NPTEL, IIT Roorkee</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1lL2JY8RcvaXk5fnGfTajsSibfKk8BvMP/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- IIT Bombay ML -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-indigo-400 block">Python for Machine Learning</span>
+                                    <span class="text-slate-400 text-xs">IIT Bombay (Score: 92%)</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1vrTfmaUXwE-G39yYyR0rgYYj4P4aCD9e/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded hover:bg-indigo-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- HackerRank SQL Advanced -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">SQL (Advanced)</span>
+                                    <span class="text-slate-400 text-xs">HackerRank Certified</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1qpRbP7AE-cey3vQy8sNds8Gpy4RGg14J/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- HackerRank SQL Intermediate -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">SQL (Intermediate)</span>
+                                    <span class="text-slate-400 text-xs">HackerRank Certified</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1ONLG1HPP2TVvlV63s3TwXBNQW3HUlfxZ/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- HackerRank SQL Basic -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">SQL (Basic)</span>
+                                    <span class="text-slate-400 text-xs">HackerRank Certified</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/18X_8xPDtHUiOQNxTcVRJbUOd9FNhGq_-/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- IIT Bombay C/C++ -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-cyan-400 block">Cpp Training & Programming</span>
+                                    <span class="text-slate-400 text-xs">IIT Bombay (Score: 80%)</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1k5kH-ogpI34cAyDs4bwdnd6nkbiJ7VQc/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- Coursera Adobe GenAI -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-purple-400 block">Generative AI Content Creation</span>
+                                    <span class="text-slate-400 text-xs">Adobe & Coursera</span>
+                                </div>
+                                <a href="https://coursera.org/verify/RSCZ5W3A0NLY" target="_blank" class="text-xs px-2.5 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/30 rounded hover:bg-purple-500/20 transition-all font-semibold">
+                                    Verify ↗
+                                </a>
+                            </div>
+
+                            <!-- FutureSkills GenAI Tools -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">Gen AI Tools</span>
+                                    <span class="text-slate-400 text-xs">NASSCOM FutureSkills Prime</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1JOzIY-aOnv-pNnOgimd61ET3hXudS7Ry/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- FutureSkills GenAI 101 -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">Gen AI 101</span>
+                                    <span class="text-slate-400 text-xs">NASSCOM FutureSkills Prime</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1bW5ABiwtvi73x4tl5_fBeJ0Y3mK4kHBx/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- FutureSkills Digital Edge 101 -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-emerald-400 block">Digital Edge 101</span>
+                                    <span class="text-slate-400 text-xs">NASSCOM FutureSkills Prime</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1IDvQEnCtlE724KL1a3nmemqpWfETzScf/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded hover:bg-emerald-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+
+                            <!-- Sinhgad CodeBattle Volunteer -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-cyan-400 block">Code Battle Volunteer</span>
+                                    <span class="text-slate-400 text-xs">Sinhgad Institute of Management</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1mrAnRCVeYoVzSnX__YTIAMclwT8vB4-8/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+                         
+                        <!-- Linux Training Certificate -->
+<div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+    <div>
+        <span class="font-medium text-cyan-400 block">
+            Linux Training
+        </span>
+
+        <span class="text-slate-400 text-xs">
+            Spoken Tutorial, IIT Bombay
+        </span>
+
+        <span class="text-slate-500 text-xs block">
+            Score: 66.67% | 2 Credits
+        </span>
+
+        <span class="text-slate-500 text-xs block">
+            06 October 2026
+        </span>
+    </div>
+
+    <a
+        href="https://drive.google.com/file/d/1Vmwilk6W1iOUziDx7skO8VQCeRS2epKc/view?usp=drivesdk"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/20 transition-all font-semibold whitespace-nowrap"
+    >
+        View ↗
+    </a>
+</div>
+
+                            <!-- Sinhgad ChillZone Event -->
+                            <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800/80 flex items-center justify-between">
+                                <div>
+                                    <span class="font-medium text-indigo-400 block">ChillZone Event</span>
+                                    <span class="text-slate-400 text-xs">Sinhgad Institute of Management</span>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1brDttHRH45cUOPJ5_-uZ0dpg3uu-A7M_/view?usp=drive_link" target="_blank" class="text-xs px-2.5 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 rounded hover:bg-indigo-500/20 transition-all font-semibold">
+                                    View ↗
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-800/60">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-14 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-3">Let's Connect</h2>
+                    <p class="text-slate-400">Open to Data Analyst, Business Intelligence, and Analytics Internships/Roles</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Form with Web3Forms Real-time submission -->
+                    <div class="glass p-6 sm:p-8 rounded-xl border border-slate-800">
+                        <h3 class="text-lg font-bold mb-4">Send a Direct Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <!-- Integrated Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="679f2457-b00c-43e8-9a46-b685cde7955f">
+                            <input type="hidden" name="subject" value="New Portfolio Message from Himanshu's Website">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">YOUR NAME</label>
+                                <input type="text" name="name" id="form-name" required placeholder="Recruiter / Collaborator Name">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">YOUR EMAIL</label>
+                                <input type="email" name="email" id="form-email" required placeholder="name@company.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1">MESSAGE</label>
+                                <textarea name="message" id="form-msg" rows="4" required placeholder="Hi Himanshu, we would like to discuss an opportunity..."></textarea>
+                            </div>
+                            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center">Send Message</button>
+                            
+                            <!-- Real-time Status Feedback -->
+                            <div id="form-status-success" class="hidden text-xs text-center p-2.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                Thank you! Your message has been sent successfully. I will get back to you soon.
+                            </div>
+                            <div id="form-status-error" class="hidden text-xs text-center p-2.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                                Oops! Something went wrong. Please try again or email directly at trivedih748@gmail.com.
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Direct Info -->
+                    <div class="glass p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold mb-6">Contact Channels</h3>
+                            <div class="space-y-4 text-sm">
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Email</span>
+                                    <a href="mailto:trivedih748@gmail.com" class="text-cyan-400 font-semibold hover:underline">trivedih748@gmail.com</a>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Phone</span>
+                                    <a href="tel:+919140895564" class="text-slate-200 font-medium hover:text-cyan-400">+91 9140895564</a>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-400 block">Location</span>
+                                    <span class="text-slate-200">Pune, Maharashtra (Open to Relocation / Remote)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-800 mt-6">
+                            <span class="text-xs text-slate-400 block mb-3">Profiles & Presence</span>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://linkedin.com/in/himanshu-trivedi-95566125a" target="_blank" class="p-2.5 glass rounded-lg hover:text-cyan-400 text-xs font-medium flex items-center gap-1.5">
+                                    LinkedIn
+                                </a>
+                                <a href="https://github.com/trivedi25367" target="_blank" class="p-2.5 glass rounded-lg hover:text-indigo-400 text-xs font-medium flex items-center gap-1.5">
+                                    GitHub
+                                </a>
+                                <a href="https://data-analyst-portfolio-steel.vercel.app/" target="_blank" class="p-2.5 glass rounded-lg hover:text-emerald-400 text-xs font-medium flex items-center gap-1.5">
+                                    Live Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+            <p>© 2026 Himanshu Trivedi. Portfolio developed for Data Analytics & BI.</p>
+        </footer>
+    </div>
+
+    <!-- Case Study Modal -->
+    <div id="modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass bg-slate-900 max-w-2xl w-full rounded-2xl border border-slate-700 p-6 sm:p-8 relative max-h-[85vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">✕</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching for Code Snippets
+        function switchTab(type) {
+            const tabs = ['sql', 'python', 'powerbi'];
+            tabs.forEach(t => {
+                const codeBlock = document.getElementById(`code-${t}`);
+                const tabBtn = document.getElementById(`tab-${t}`);
+                if(t === type) {
+                    codeBlock.classList.remove('hidden');
+                    tabBtn.className = "px-4 py-2 text-sm font-semibold rounded-t-lg text-cyan-400 border-b-2 border-cyan-400 bg-slate-800/50";
+                } else {
+                    codeBlock.classList.add('hidden');
+                    tabBtn.className = "px-4 py-2 text-sm font-semibold rounded-t-lg text-slate-400 hover:text-slate-200";
+                }
+            });
+        }
+
+        // Case Study Modal Data
+        const caseStudies = {
+            attendify: {
+                title: "Attendify - Smart Attendance Management System",
+                tech: "Python, Django, SQLite, HTML, CSS, JavaScript",
+                problem: "Manual attendance records in educational institutes led to proxy issues, lost logs, and slow monthly report generation.",
+                approach: "Engineered role-based access for students, faculty, and admins. Built relational schema in SQLite to log timestamps and compute leave percentages dynamically via Django ORM.",
+                result: "Streamlined attendance tracking, automated leave management approvals, and provided real-time feedback modules."
+            },
+            license: {
+                title: "Smart E-Driving License System",
+                tech: "Java, JSP, Servlet, JDBC, MySQL, ZXing QR",
+                problem: "Lack of verification transparency and manual delays between Learner License (LL) and Permanent Driving License (DL) approvals.",
+                approach: "Developed automated 30-day eligibility logic between LL and DL stages. Integrated MySQL database via JDBC for transaction records and implemented QR code verification.",
+                result: "Created an end-to-end digitized pipeline from document upload to instant QR verification."
+            },
+            blog: {
+                title: "Responsive Content & Blog Platform",
+                tech: "Python, Django, SQLite, Tailwind CSS",
+                problem: "Structuring categorized content with rapid query retrieval and responsive interfaces.",
+                approach: "Implemented normalized models for posts, categories, and author credentials with built-in search filters and user authentication.",
+                result: "Delivered a clean, fast-loading content management platform with responsive layouts."
+            }
+        };
+
+        function openModal(id) {
+            const data = caseStudies[id];
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-400 text-xs font-semibold mb-3">${data.tech}</div>
+                <h3 class="text-2xl font-bold mb-4 text-white">${data.title}</h3>
+                <div class="space-y-4 text-sm text-slate-300">
+                    <div>
+                        <strong class="text-slate-100 block mb-1">Project Scope & Problem:</strong>
+                        <p class="text-slate-400">${data.problem}</p>
+                    </div>
+                    <div>
+                        <strong class="text-slate-100 block mb-1">Technical Implementation:</strong>
+                        <p class="text-slate-400">${data.approach}</p>
+                    </div>
+                    <div>
+                        <strong class="text-slate-100 block mb-1">Outcome & Highlights:</strong>
+                        <p class="text-emerald-400">${data.result}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+            document.getElementById('modal').classList.remove('flex');
+        }
+
+        // Real-time Working Form Handler via Web3Forms
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-status-success');
+        const errorMsg = document.getElementById('form-status-error');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3Forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonRes = await response.json();
+                if (response.status == 200) {
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                } else {
+                    console.log(response);
+                    errorMsg.classList.remove('hidden');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                errorMsg.classList.remove('hidden');
+            })
+            .then(function() {
+                submitBtn.innerText = "Send Message";
+                submitBtn.disabled = false;
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                    errorMsg.classList.add('hidden');
+                }, 6000);
+            });
+        });
+    </script>
+</body>
+</html>
